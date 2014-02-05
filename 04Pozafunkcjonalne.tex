@@ -1,52 +1,366 @@
 \chapter{Wymagania pozafunkcjonalne}
 \label{Chapter4}
 
-\section{Wstęp}
-\label{Chapter41}
+Wymagania pozafunkcjonalne (ang. non-functional requirements) określają jakość sposobu realizacji funkcji przez system. Mimo, że wymagania funkcjonalne uda się spełnić, to nie zawsze realizacja celu jest w stanie usatysfakcjonować odbiorcę systemu. Dobrze sprecyzowane wymagania pozafunkcjonalne pozwalają na uniknięcie niskiej użyteczności systemu oraz mogą mieć wpływ na sam sposób realizacji projektu. Stworzenie i weryfikacja tych wymagań jest ważna zarówno dla zlecającego projekt jak i wykonawcy projektu, gdyż doprecyzowują one użyteczność korzystania z systemu, co pozwala na uniknięcie sporów podczas odbioru projektu, w przypadku niskiej jego jakości. Jakość uzyskanego systemu ma również wpływ na jego późniejsze utrzymanie po stronie klienta, stąd tak ważne rozsądne opisanie wymagań pozafunkcjonalnych, które nie zawsze potrafią być oczywiste dla użytkowników końcowych.
 
-W niniejszym rozdziale zostaną zaprezentowane i krótko opisane charakterystyki oraz wymagania pozafunkcjonalne obowiązujące dla systemu. Ponadto zostanie podjęta próba weryfikacji, które wymagania udało się spełnić i jakie są perspektywy rozwoju
+\section{Standard ISO/IEC FDIS 25010}
 
-\section{Charakterystyki oprogramowania}
-
-Poniżej są jeszcze stare charakterystyki oprogramowania (wtedy myśleliśmy, że to mądrze brzmi), kategorii wymagań pozafunkcjonalnych. Obecnie to się trochę zmieniło, zatem ta lista będzie znacznie bardziej rozbudowana.
+Model jakości oprogramowania standardu ISO/IEC FDIS 25010 [3] wyróżnia następujące charakterystyki i podcharakterystyki jakości oprogramowania:
 
 \begin{itemize}
-\item Dokładność (ang. \definicja{accuracy})
-\item Bezpieczeństwo (ang. \definicja{security})
-\item Odporność na błędy (ang. \definicja{fault tolerance})
-\item Odtwarzalność (ang. \definicja{recoverability})
-\item Charakterystyka czasowa (ang. \definicja{time behaviour})
-\item Łatwość analizowania (ang. \definicja{analysability})
-\item Łatwość zmian (ang. \definicja{changeability})
-\item Adaptowalność (ang. \definicja{adaptability})
-\item Instalowalność (ang. \definicja{installability})
-\item Współistnienie (ang. \definicja{co-existence})
-\item Zamienność (ang. \definicja{replaceability})
+\item Funkcjonalne dopasowanie (ang. Functional suitability)
+	\begin{itemize}
+	\item Funkcjonalna kompletnosc (ang. Functional completeness)
+	\item Funkcjonalna odpowiedniość (ang. Functional correctness)
+	\item Funkcjonalna poprawność (ang. Functional appropriateness)
+	\end{itemize}
+\item Wydajność (ang. Performance efficiency)
+	\begin{itemize}
+	\item Charakterystyka czasowa (ang. Time behaviour)
+	\item Zużycie zasobów (ang. Resource utilization)
+	\item Oczekiwana wydajność (ang. Capacity)
+	\end{itemize}
+\item Kompatybilność (ang. Compatibility)
+	\begin{itemize}
+	\item Współistnienie (ang. Co-existence)
+	\item Interoperacyjność (ang. Interoperability)
+	\end{itemize}
+\item Użyteczność (ang. Usability)
+	\begin{itemize}
+	\item Rozpoznawalność zastosowania (ang. Appropriateness recognizability)
+	\item Łatwość nauczenia się (ang. Learnability)
+	\item Łatwość operowania (ang. Operability)
+	\item Ochrona użytkownika przed błędami (ang. User error protection)
+	\item Estetyka interfejsu użytkownika (ang. User interface aesthetics)
+	\item Dostępność personalna (ang. Accessibility)
+	\end{itemize}
+\item Niezawodność (ang. Reliability)
+	\begin{itemize}
+	\item Dojrzałość (ang. Maturity)
+	\item Tolerancja uszkodzeń (ang. Availability)
+	\item Odporność na wady (ang. Fault tolerance)
+	\item Odtwarzalność (ang. Recoverability)
+	\end{itemize}
+\item Bezpieczeństwo (ang. Security)
+	\begin{itemize}
+	\item Poufność (ang. Confidentiality)
+	\item Integralność (ang. Integrity)
+	\item Niezaprzeczalność (ang. Non-repudiation)
+	\item Identyfikowalność (ang. Accountability)
+	\item Autentyczność (ang. Authenticity)
+	\end{itemize}
+\item Łatwość utrzymania (ang. Maintainability)
+	\begin{itemize}
+	\item Modułowość (ang. Modularity)
+	\item Łatwość ponownego wykorzystania (ang. Reusability)
+	\item Łatwość analizy (ang. Analysability)
+	\item Łatwość zmiany (ang. Modifiability)
+	\item Łatwość testowania (ang. Testability)
+	\end{itemize}
+\item Przenośność (ang. Portability)
+	\begin{itemize}
+	\item Łatwość adaptacji (ang. Adaptability)
+	\item Łatwość instalacji (ang. Installability)
+	\item Łatwość zamiany (ang. Replaceability)
+	\end{itemize}
 \end{itemize}
 
-Tutaj piszemy, które podcharakterystyki były dla nas priorytetowe lub szczególnie ważne, a które mniej. Oczywiście, z uzasadnieniem. Piszemy również, jak zamierzaliśmy (lub to robiliśmy) dbać o to, aby wszystko było spełnione.
+Wymienione podcharakterystyki posłużyły jako kategorie wymagań pozafunkcjonalnych w projekcie. Ze względu na specyfikę systemu - aplikacji internetowej niektóre kategorie tego standardu nie zostały wykorzystane podczas prac nad wymaganiami pozafunkcjonalnymi.
 
 \section{Wymagania pozafunkcjonalne i ich weryfikacja}
 
-W tablicy \ref{tab:reqs} przedstawiono wymagania pozafunkcjonalne związane z systemem. W kolumnach \textbf{Priorytet} oraz \textbf{Trudność} określono poziomy przy pomocy następującej notacji:
+W kolejnych tablicach przedstawiono wymagania pozafunkcjonalne systemu LinkedInGrads, określonych przy pomocy standardu ISO/IEC FDIS 25010. Priorytet wymagań określono za pomocą notacji:
 
 \begin{itemize}
-\item H -- wysoki priorytet lub poziom trudności
-\item M -- średni priorytet lub poziom trudności
-\item L -- niski priorytet lub poziom trudności
-\item N -- wymaganie oczywiste lub bardzo proste do spełnienia
+\item Would - System może spełniać dane wymaganie,
+\item Should - System powinien spełniać dane wymaganie,
+\item Must - System musi spełniać dane wymaganie.
+Dodatkowo określono złożoność każdego z wymagań wykorzystując następującą notację:
+\item Low - Niski stopień złożoności wymagania pozafunkcjonalnego,
+\item Medium - Średni stopień złożoności wymagania pozafunkcjonalnego,
+\item High - Wysoki stopień złożoności wymagania pozafunkcjonalnego.
+Metryki te pozwalały podczas prac nad projektem na realizację najważniejszych wymagań, uwzględniając ich złożoność czasową skonfrontowaną z dostępnym czasem na realizację projektu. Ostatnia kolumna tabeli określa czy w projekcie LinkedInGrads udało się spełnić dane wymaganie pozafunkcjonalne.
 \end{itemize}
-\begin{table}[h]
+
+\subsection{Funkcjonalne dopasowanie: Funkcjonalna kompletność}
+
+\begin{table}[H]
 \centering
-\begin{tabular}{ | c | p{7cm} | c | c | }
+\begin{tabular}{ | p{8cm} | c | c | c | }
 \hline
-\textbf{Podcharakterystyka} & \textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Trudność} \\ \hline
-Nazwa podcharakterystyki & Wymaganie 1 (przykład procentów: 90\%) & H & H \\ \hline
-Nazwa podcharakterystyki & Wymaganie 2 & M & H \\ \hline
-Nazwa podcharakterystyki & Wymaganie 3 & H & L \\ \hline
-Nazwa podcharakterystyki & Wymaganie 4 & N & L \\ \hline
-... & ... & ... & ... \\ \hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Współpraca z przeglądarką Firefox (dla dwóch najnowszych wersji). & Must & Low & Zrealizowano \\ \hline
 \end{tabular}
-\caption{Wymagania pozafunkcjonalne}\label{tab:reqs}
+\caption{Funkcjonalne dopasowanie: Funkcjonalna kompletność}\label{tab:reqs}
 \end{table}
-A tutaj piszemy o wszelkich problemach, wszelkich naszych wnioskach związanych ze spełnianiem wymagań pozafunkcjonalnych -- co się udało, co nie (i dlaczego). Tak, jakbyśmy opisywali nasze doświadczenia i problemy, z jakimi przyszło nam się zmagać i być może rozwiązać. Staramy się odnieść do najważniejszych wymagań (chyba że jest ich mało, wtedy do wszystkich).
+
+System był tworzony wykorzystując do testów najnowszą wersję przeglądarki Mozilla Firefox, oraz dodatkowo Google Chrome. Zapewniło to kompatybilność systemu z tymi przeglądarkami, a funkcje użyte wewnątrz systemu nie wykraczają poza zakres możliwości poprzednich kilku wersji tych przeglądarek.
+
+\subsection{Wydajność: Charakterystyka Czasowa}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Dla 20000 absolwentów aktualizacja danych
+z LinkedIn nie powinna trwać dłużej niż
+tydzień. & Must & Medium & Zrealizowano \\ \hline
+System powinien estymować czas
+aktualizacji danych. & Would & High & Pominęto \\ \hline
+Generowanie raportu nie może trwać dłużej
+niż 10 sekund - w przeciwnym wypadku
+informacja o czasie. & Should & Medium & Zrealizowno \\ \hline
+\end{tabular}
+\caption{Wydajność: Charakterystyka Czasowa}\label{tab:reqs}
+\end{table}
+
+Wymagania tej kategorii udało się spełnić, a dzięki aktualizacji danych w tle, estymacja czasu zakończenia aktualizacji okazała się zbędna w finalnej wersji produktu, co również spowodowało niski czas generowania raportu.
+
+\subsection{Kompatybilność: Współistnienie}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Na jednym serwerze może być
+uruchomionych wiele instancji aplikacji. & Would & Medium & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Kompatybilność: Współistnienie}\label{tab:reqs}
+\end{table}
+
+Wymaganie to zostało zrealizowane na poziomie architektury poprzez wykorzystanie aplikacji internetowej uruchamianej w środowisku serwera WWW.
+
+\subsection{Kompatybilność: Interoperacyjność}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+System ma udostępniać dane absolwenta w
+trybie odczytu w formacie JSON przez webservice.
+ & Should & High & Pominięto \\ \hline
+System ma generować raporty w formacie
+CSV.
+ & Should & Low & Pominęto \\ \hline
+System ma generować raporty w formacie
+XLS.
+ & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Kompatybilność: Interoperacyjność}\label{tab:reqs}
+\end{table}
+
+Ze względu na duży narzut czasowy wymagań pozafunkcjonalnych z tej kategorii udało się zrealizować tylko generowanie raportu w formacie XLS. Pominięte wymagania funkcjonalne nie były kluczowe dla systemu, co spowodowało, że ich realizacja nie została przydzielona do żadnego ze sprintów.
+
+\subsection{Użyteczność: Łatwość nauczenia się}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Interfejs użytkownika powinien być skonsultowany ze wszystkimi potencjalnymi użytkownikami.
+ & Must & Low & Zrealizowano \\ \hline
+Instrukcja użytkownika powinna być zorientowana na cele poszczególnych aktorów.
+ & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Użyteczność: Łatwość nauczenia się}\label{tab:reqs}
+\end{table}
+
+Zespół był wysoce zorientowany na potrzeby użytkownika końcowego, co już w samej fazie projektowania interfejsów użytkownika zapewniło wysoką jakość systemu. Po skonsultowaniu z użytkownikami, wdrożono udoskonalenia co pozwoliło na zrealizowanie wymagania pozafunkcjonalnego.
+
+\subsection{Użyteczność: Ochrona użytkownika przed błędami}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | p{2cm} | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+System musi być przygotowany na rozszerzenie list atrybutów.
+ & Must & Low & Zrealizowano \\ \hline
+System powinien logować błedy (wyjątki) do logu systemowego.
+ & Must & Low & Zrealizowano \\ \hline
+ System powinien informować o błędnej konfiguracji natychmiast po jej wprowadzeniu. & Would & Medium & Pominięto \\ \hline
+ System ma potwierdzać powiązanie/odwiązanie użytkownika. & Would & Low & Pominięto \\ \hline
+ System powinien zapewnić kontrolę nieprzewidzianych wyjątków. & Must & Low & Zrealizowano częściowo. \\ \hline
+ Po wykonaniu importu danych system informuje ilu absolwentów zaimportowano, a ile jest konfliktów. & Must & Low & Pominięto \\ \hline
+\end{tabular}
+\caption{Użyteczność: Ochrona użytkownika przed błędami}\label{tab:reqs}
+\end{table}
+
+System został przygotowany mając od początku na uwadze możliwość rozszerzenia go o  dodatkowe dane jak i dodatkowe źródła danych, co zapewniło realizację pierwszego z wymagań. Wszystkie błędy które pojawią się w aplikacji automatycznie zapisywane są do logów, co częściowo realizuje również wymaganie dotyczące kontroli nieprzewidzianych wyjątków, które zostają w momencie wystąpienia ukryte przed użytkownikiem końcowym. Podczas prac nad systemem zrezygnowano z możliwości konfiguracji parametrów jego pracy, ze względu na brak zasadności jakichkolwiek zmian. Wymaganie to powstało mając na uwadze możliwe ograniczenia narzucone na system pochodzące z zewnętrznych źródeł danych. Również w trakcie prac zrezygnowano z automatycznego wyszukiwania użytkowników wewnątrz sieci społecznościowej LinkedIn i wiązania znalezionych kont z danymi osób dostarczonymi z dziekanatu. Wyeliminowało to potrzebę potwierdzania powiązania/odwiązania użytkownika, gdyż dane te wprowadzane są manualnie przez użytkownika. Ostatnie z wymagań nie zostało zrealizowane ze względu na dołączenie go do wymagań pozafunkcjonalnych w późnej fazie projektu i nie uwzględnienie jego realizacji w żadnym ze sprintów.
+
+\subsection{Użyteczność: Estetyka interfejsu użytkownika}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Interfejs powinien zawierać logo Politechniki Poznańskiej oraz opis przeznaczenia systemu.
+ & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Użyteczność: Estetyka interfejsu użytkownika}\label{tab:reqs}
+\end{table}
+
+\subsection{Użyteczność: Dostępność personalna}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+System dostępny tylko w jednej wersji językowej - Polskiej
+ & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Użyteczność: Dostępność personalna}\label{tab:reqs}
+\end{table}
+
+\subsection{Niezawodność: Tolerancja uszkodzeń}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Przerwy serwisowe możliwe są w godzinach 18-6 lub po wcześniejszym ustaleniu.
+ & Should & Low & Pominięto \\ \hline
+ Niekontrolowana awaria może trwać maksymalnie 2 dni. & Should & Low & Pominięto \\ \hline
+\end{tabular}
+\caption{Niezawodność: Tolerancja uszkodzeń}\label{tab:reqs}
+\end{table}
+
+Wymagania należące do tej kategorii nie zostały zrealizowane. Wynika to z faktu, że dotyczą one utrzymania systemu po jego wdrożeniu, więc weryfikacja tych wymagań była niemożliwa do przeprowadzenia.	
+
+\subsection{Niezawodność: Odporność na wady}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+System należy poddać analizie z wykorzystaniem metody ATAM.
+ & Must & Low & Zrealizowano \\ \hline
+Wszystkie funkcje głównego scenariusza powinny być możliwe do przetestowania w sposób automatyczny.
+ & Should & Low & Zrealizowano \\ \hline
+W przypadku problemów z połączeniem, proces aktualizacji danych powinien być wznawiany (od stanu w którym nastąpiło przerwanie). & Would & Low & Zrealizowano \\ \hline
+System powinien posiadać testy jednostkowe oraz testy akceptacyjne. & Must & High & Zrealizowano \\ \hline
+W przypadku problemów z połączeniem proces aktualizacji danych powinien być ponawiany. & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Niezawodność: Odporność na wady}\label{tab:reqs}
+\end{table}
+
+\subsection{Niezawodność: Odtwarzalność}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+System powinien tworzyć kopie zapasowe danych codziennie.
+ & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Niezawodność: Odtwarzalność}\label{tab:reqs}
+\end{table}
+
+\subsection{Bezpieczeństwo: Poufność}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+System zapewnia szyfrowane połączenie z użytkownikiem (nie wymaga zaufanego certyfikatu). 
+ & Should & Low & Zrealizowano \\ \hline
+System powinien korzystać z systemu eLogin do uwierzytelniania użytkowników. & Must & Medium & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Bezpieczeństwo: Poufność}\label{tab:reqs}
+\end{table}
+
+\subsection{Bezpieczeństwo: Integralność}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Dane przechowywane w systemie powinny być chronione przed nieuprawnionym odczytem, modyfikacją, usunięciem.
+ & Must & Low & Zrealizowano \\ \hline
+System powinien być odporny na SQL injection. & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Bezpieczeństwo: Integralność}\label{tab:reqs}
+\end{table}
+
+Wymagania zawarte w tej kategorii zostały zrealizowane na poziomie architektury, poprzez wykorzystanie przygotowanych zapytań (ang. prepared statements), oraz wymaganie uwierzytelnienia użytkownika.
+
+\subsection{Bezpieczeństwo: Niezaprzeczalność}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Import danych powinien mieć stempel czasowy – w raporcie powinna się znaleźć data aktualizacji danych na podstawie których będzie generowany raport.
+ & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Bezpieczeństwo: Niezaprzeczalność}\label{tab:reqs}
+\end{table}
+
+\subsection{Łatwość utrzymania: Łatwość analizy}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Należy zapewnić dokumentację zgodną z wymaganiami DRO.
+ & Must & Medium & Zrealizowano \\ \hline
+Kod źródłowy systemu musi przestrzegać konwencji wymaganej przez DRO. & Must & Medium & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Łatwość utrzymania: Łatwość analizy}\label{tab:reqs}
+\end{table}
+
+\subsection{Łatwość utrzymania: Łatwość zmiany}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Architektura powinna zapewnić rozdzielenie warstwy backendowej od frontendowej.
+ & Must & Low & Zrealizowano \\ \hline
+System musi być przygotowany na zmianę generowania raportów i udostępniania danych. & Must & Low & Zrealizowano \\ \hline
+Model danych systemu powinien być przygotowany na zmiany: integrację z nowymi systemami, adaptację na potrzeby innych uczelni. & Must & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Łatwość utrzymania: Łatwość zmiany}\label{tab:reqs}
+\end{table}
+
+Rozdzielenie warstwy frontendowej od backendowej zostało zrealizowane z pomocą frameworka Ruby on Rails implementującego wzorzec projektowy MVC (Model-view-controller). System zapewnia również możliwość tworzenia nowych raportów, oraz integrację z innymi systemami ze względu na modularną architekturę systemu.
+
+\subsection{Łatwość utrzymania: Łatwość testowania}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Przewidzenie dwóch trybów - produkcyjny i testowy.
+ & Should & Low & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Łatwość utrzymania: Łatwość testowania}\label{tab:reqs}
+\end{table}
+
+\subsection{Przenośność: Łatwość instalacji}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ | p{8cm} | c | c | c | }
+\hline
+\textbf{Wymaganie} & \textbf{Priorytet} & \textbf{Złożoność} & \textbf{Realizacja} \\ \hline
+Należy dostarczyć szczegółową instrukcję instalacji oraz konfiguracji środowiska wykonawczego.
+ & Must & Medium & Zrealizowano \\ \hline
+\end{tabular}
+\caption{Przenośność: Łatwość instalacji}\label{tab:reqs}
+\end{table}
