@@ -6,52 +6,55 @@ Podstawą zapewniania jakości każdego systemu informatycznego jest wprowadzeni
 \section{Testy i weryfikacja jakości oprogramowania}
 \label{Chapter71}
 
-\subsection{Środowisko testowy}
+\subsection{Środowisko testowe}
 
+Do napisania testów automatycznych systemu wykorzystano następujące narzędzia:
+
+\begin{itemize}
+\item RSpec Rails - framework do tworzenia i wykonywania testów aplikacji Ruby on Rails, w myśli idei programowania sterowanego zachowaniami (ang. Behaviour Driven Development),
+\item Shoulda matchers - biblioteka udostępniana w postaci gemu, rozszerzająca zestaw dostępnych asercji i funkcji pomocniczych,
+\item FactoryGirl Rails - biblioteka udostępniana w postaci gemu, pozwalająca na znaczne uproszczenie procesu tworzenia i zapisywania w bazie danych obiektów testowych,
+\item Faker - biblioteka udostępniana w postaci gemu, służąca do automatycznego generowania wartości pól tworzonych obiektów testowych, 
+\item niezależna testowa baza danych PostgreSQL.
+\end{itemize}
 
 \subsection{Testy jednostkowe}
 \label{Chapter711}
 
-Tutaj piszemy o testach jednostkowych -- jak je zrobiliśmy oraz jakie były problemy, wnioski, które się pojawiły.
+Testy jednostkowe pozwalają na weryfikację poprawności działania pojedynczych metod określonej klasy, a zatem umożliwiają precyzyjną lokalizację przyczyny wystąpienia ewentualnych błędów wykonania. W systemie LinkedInGrads stanowią podstawowy rodzaj testów i są wykorzystywane głównie do sprawdzania powiązań i reguł walidacji modeli oraz publicznych akcji kontrolerów. Wprowadzenie do projektu testów jednostkowych pozwoliło na wykrywanie drobnych błędów w możliwie krótkim czasie od ich pojawienia się w systemie. 
 
 \subsection{Testy integracyjne}
 \label{Chapter712}
 
-Podrozdział opcjonalny (bo nie wiem, czy wszyscy robią takie testy). Tutaj piszemy o testach integracyjnych -- jak je zrobiliśmy oraz jakie były problemy, wnioski, które się pojawiły.
+Testy integracyjne pozwalają na weryfikację poprawności współdziałania kilku jednostek systemu, takich jak klasy, moduły czy zasoby. Z uwagi na silne zorientowanie tworzonego systemu na dane, stanowią dla niego bardzo istotny rodzaj testów i są wykorzystywane głównie do sprawdzania wyników złożonych zapytań do bazy danych. Wprowadzenie do projektu testów integracyjnych pozwoliło na upewnienie się, że generowane przez system raporty o absolwentach zawierają właściwe informacje.
 
 \subsection{Testy akceptacyjne}
 \label{Chapter713}
 
-Tutaj piszemy o testach akceptacyjnych -- jak je zrobiliśmy oraz jakie były problemy, wnioski, które się pojawiły. Tutaj zwykle pojawią się testy akceptacyjne przygotowane przez Waszych kierowników, ale także różne opisy, w tym -- jeśli jest to zrobione -- automatycznych testów. 
-
-Poniżej przedstawiono Manualne Testy Akceptacyjne:
-
-\matbegin{MAT01}{Nazwa testu pierwszego}
-\matpres
-\matpre{Warunek początkowy 1}
-\matpre{Warunek początkowy 2}
-\matsteps
-\matstep{1}{Polecenie pierwsze}{Odpowiedź systemu}
-\matstep{2}{Polecenie drugie}{Odpowiedź systemu}
-\matstep{3}{Polecenie trzecie}{Odpowiedź systemu}
-\matremark{Jakaś uwaga.}
-
-\matbegin{MAT02}{Nazwa testu drugiego}
-\matpres
-\matpre{Warunek początkowy 1}
-\matpre{Warunek początkowy 2}
-\matsteps
-\matstep{1}{Polecenie pierwsze}{Odpowiedź systemu}
-\matstep{2}{Polecenie drugie}{Odpowiedź systemu}
-\matstep{4}{Polecenie trzecie}{Odpowiedź systemu}
-\matremark{Brak}
+Testy akceptacyjne pozwalają na walidację systemu, a zatem potwierdzenie jego zgodności z oczekiwaniami klienta. Z uwagi na prostotę interfejsu systemu LinkedInGrads oraz niewielką liczbę kroków głównego scenariusza, a także istotny koszt czasowy konfiguracji odpowiednich narzędzi, zrezygnowano z wprowadzania do projektu automatycznych testów tego rodzaju na rzecz systematycznie przeprowadzanych testów manualnych. W dodatku D przedstawiono scenariusze manualnych testów akceptacyjnych, opracowane na podstawie przypadków użycia przedstawionych w rozdziale 3.
 
 \subsection{Inne metody zapewniania jakości}
 \label{Chapter714}
 
-Jeśli testowaliście projekt w jakiś inny sposób, mieliście inne formy weryfikacji (np.~rzucanie komputerem o ściany czy z drugiego miejsca), to tutaj to opisujecie. Prawdopodobnie dobrze będzie opisać tutaj wszelkie testy dla interfejsu, jeśli np.~testowaliście użytkowników i sam system pod tym kątem.
+\subsection{Metodyka pracy i model przyrostowy}
 
-\section{Sposób uruchomienia i~działania systemu}
-\label{Chapter72}
+W trakcie realizacji projektu zespół programistyczny pracował zgodnie ze zwinną metodyką Scrum. Metodyka ta opiera się na podejściu iteracyjnym, tj. wprowadzeniu podziału procesu rozwijania produktu na krótkie iteracje (tzw. sprinty, przebiegi bądź przyrosty). Po każdej iteracji zespół dostarczał klientowi działającą wersję produktu, wzbogaconą w stosunku do poprzedniej o pewien zakres funkcji niosących wartość biznesową. Podczas spotkania będącego przeglądem sprintu (ang. Sprint Review) klient miał możliwość zapoznania się z uaktualnionym systemem i przekazania zespołowi informacji zwrotnej na jego temat. Prowadzenie prac implementacyjnych zgodnie z modelem przyrostowym oraz utrzymywanie stałego kontaktu z klientem umożliwiło systematyczną walidację systemu i stanowiło istotną metodę zapewniania jakości rozumianej jako zgodność z oczekiwaniami klienta.
 
-Tutaj można napisać jak przygotować system do działania i jak przeprowadzić konfigurację. Prawdę mówiąc, nie wiem, czy to powinno się tutaj znaleźć, ale być może warto, dlatego na wszelki wypadek to umieszczam.
+\subsection{Standardy kodowania}
+
+Standardy kodowania stanowią zestaw zaleceń dotyczących konwencji nazewniczych i reguł formatowania kodu źródłowego. Dzięki stosowaniu standardów systemy współtworzone przez wielu programistów zachowują czytelność i jednolitość. Służy to przede wszystkim przyszłym administratorom systemu i osobom, które zamierzają go rozwijać. W trakcie prac nad systemem LinkedInGrads zastosowano standardy kodowania zdefiniowane w The Ruby Style Guide [5]. Weryfikacji zgodności z przyjętymi standardami dokonano za pomocą narzędzia do statycznej analizy kodu źródłowego RuboCop.
+
+\subsection{Ciągła integracja}
+
+Ciągła integracja (ang. continuous integration) jest uznaną praktyką programistyczną, zakładającą regularne integrowanie zmian wprowadzanych do kodu programu przez różnych programistów. W celu realizacji tego założenia, w ramach prac nad systemem LinkedInGrads, na serwerze deweloperskim został zainstalowany serwer ciągłej integracji Jenkins, który po każdej wykrytej zmianie w systemie kontroli wersji samoczynnie wywoływał następujące akcje:
+
+\begin{itemize}
+\item pobranie najnowszej wersji kodu z repozytorium SVN,
+\item pobranie bibliotek potrzebnych do prawidłowego działania systemu,
+\item aktualizacja schematu produkcyjnej i testowej bazy danych,
+\item scalenie i minifikacja statycznych plików CSS i JS,
+\item wykonanie automatycznych testów jednostkowych i integracyjnych,
+\item wykonanie automatycznej analizy kodu pod kątem zgodności z przyjętymi standardami,
+\item zatrzymanie i ponowne uruchomienie serwera aplikacji.
+Wykorzystanie tak skonfigurowanego narzędzia do ciągłej integracji zagwarantowało regularne i automatyczne przeprowadzanie testów oraz umożliwiło monitorowanie bieżącego stanu systemu. Istotnemu zmniejszeniu uległ również koszt czasowy wdrażania kolejnych wersji systemu na serwer produkcyjny.
+\end{itemize}
