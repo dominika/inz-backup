@@ -1,18 +1,32 @@
 \chapter{Opis implementacji}
 \label{Chapter6}
 
-\section{Wstęp}
-\label{Chapter61}
+W powodzeniu realizacji systemu informatycznego istotny jest wybór narzędzi i technologii, które wspomogą zespół programistów i zwiększą jakość rozwiązania. W niniejszym rozdziale opisane zostaną narzędzia wykorzystane podczas wykonywania pracy inżynierskiej oraz struktura projektu wraz z podstawowymi plikami konfiguracji.
 
-Wprowadzenie. Struktura tego rozdziału nie jest z góry określona, gdyż mocno zależy to od specyfiki projektu. Generalnie w poszczególnych podrozdziałach każdy powinien opisać swoją część z takiego technicznego punktu widzenia. Piszecie, jak zrealizowaliście poszczególne wymagania, jak to wygląda ,,pod maską'', oczywiście też trzeba przyjąć jakiś poziom szczegółowości. W bardzo szczególnych przypadkach chyba może się zdarzyć, że trzeba będzie załączyć fragment jakiegoś kodu źródłowego czy konfiguracji -- generalnie ma to być opisane w taki sposób, że jako osoba nieznająca systemu siadam i wiem, jak i co zrobiliście. 
+\section{Narzędzia}
 
-Ten rozdział ma umożliwić innym osobom modyfikację kodu. Warto zatem opisać najbardziej prawdopodobne scenariusze zmian. Np. jesteśmy świadomi, że w naszym systemie może zaistnieć konieczność zmiany wizualnej jakiegoś raportu. Wówczas należałoby wyjaśnić w jaki sposób należy zmodyfikować kod, aby tego typu zmiany wcielić w życie. 
+\subsection{RubyMine}
 
-Podsumowując można tutaj umieszczać dwa typy podrozdziałów:
-- tłumaczące działania określonych mechanizmów
-- opisujące pewne scenariusze zmiany - tego typu rozdział powinien mieć jasno określony scenariusz zmiany (warto także nawiązać do wymagań) oraz rozwiązanie:
+Zintegrowane środowisko programistyczne (IDE) dedykowane dla programistów Ruby i Ruby on Rails, podstawowa aplikacja wspierająca pracę programisty. Zespół podjął decyzję o wyborze narzędzia RubyMine. Oprócz podstawowej funkcjonalności jak formatowanie kodu, refaktoryzacja, nawigacja po projekcie i łatwe debuggowanie, zapewniło stabilność oraz integrację z systemem kontroli wersji SVN oraz z systemem zarządzania bazą danych PostgreSQL.
 
+\subsection{SVN}
 
+Scentralizowany system kontroli wersji. Umożliwia śledzenie zmian w projekcie, co ułatwia pracę jednoczesną pracę wielu członków zespołu. Kolejne wersje systemu mogą być oznaczane, więc gdy zajdzie potrzeba można natychmiastowo przywrócić system do poprzednich wersji.
+
+\subsection{Jenkins}
+
+Podczas procesu implementacji projektu wykorzystano serwer ciągłej integracji Jenkins. Został on zintegrowany w ten sposób by wraz z każdą nową wersją w repozytorium uruchamiane były testy. W przypadku pomyślnego zbudowania aplikacji zmiany są automatycznie wprowadzane na serwer produkcyjny.
+
+\subsection{Nginx oraz Phusion Passenger}
+
+Konfiguracja serwerów HTTP użyta do uruchomienia sytemu LinkedInGrads w środowisku produkcyjnym. Takie połączenie ma dwie zalety:
+
+\begin{itemize}
+\item Bezpieczeństwo - serwery jak Apache i Nginx są bardzo dojrzałe. Użycie ich jako serwery pośredniczące zwiększają bezpieczeństwo uruchomionych na nich aplikacji.
+\item Wydajność - niektóre serwery lepiej radzą sobie z obsługą treści statycznych.
+\end{itemize}
+
+/////////////////
 \section{Scenariusz zmiany: modyfikacja raportu}
 \label{Chapter62}
 
