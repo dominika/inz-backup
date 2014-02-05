@@ -1,70 +1,74 @@
 \chapter{Opis procesów biznesowych}
 \label{Chapter2}
 
-\section{Aktorzy}
+Niniejszy rozdział przedstawia otoczenie systemu LinkedInGrads. Wyszczególnieni zostali aktorzy: użytkownicy oraz zewnętrzne systemy. Zaprezentowano obiekty biznesowe będące rzeczywistością, w jakiej porusza się użytkownik systemu. Każdy obiekt opatrzono krótkim opisem oraz wykazem atrybutów. Ostatni podrozdział prezentuje biznesowe przypadki użycia.
+
+\section{Aktorzy i zewnętrzne systemy}
 \label{Chapter21}
 
-Wymienienie aktorów zdefiniowanych dla systemu (np. jako wyliczenia).
+\begin{itemize}
+\item Administrator - osoba odpowiedzialna za aktualizację danych w systemie: dodawanie nowych absolwentów, znajdowanie adresów profili absolwentów.
+\item Pracownik dziekanatu - główny użytkownik systemu, grupuje pojęcia dotyczące absolwentów, generuje raporty.
+\item eLogin - zewnętrzny system Politechniki Poznańskiej służący do uwierzytelniania użytkowników.
+\item LinkedIn - sieć społecznościowa zrzeszająca specjalistów, służąca nawiązywaniu kontaktów i rozwojowi kariery.
+\end{itemize}
 
 \section{Obiekty biznesowe}
 \label{Chapter22}
 
-\subsection{Obiekt 1}
+\subsection{Raport}
 
-Opis obiektu pierwszego, jego zastosowania. Poniżej wymieniamy jego atrybuty (jeśli istnieją):
+Raport jest obiektem biznesowym reprezentującym wycinek danych przetworzonych przez system. Dodatkowo każdy z raportów uwzględnia nagłówek zawierający podstawowe informacje na temat raportu oraz zestawienie stosunku ilości danych pochodzących z różnych źródeł. Raport może również zawierać uzasadnienie prezentowanych danych prezentując dodatkowo listę absolwentów wraz z wartością użytych do wygenerowania raportu.
 
 \begin{itemize}
-\item Atrybut 1
-\item Atrybut 2
-\item ...
+\item Analiza pracodawców - prezentuje ilość absolwentów zatrudnionych w danych firmach
+\item Analiza zamieszkania - prezentuje miejsca zamieszkania absolwentów
+\item Analiza umiejętności - prezentuje umiejętności nabyte przez studentów
+\item Analiza zatrudnienia - prezentuje stosunek osób zatrudnionych do bezrobotnych
+\item Analiza stanowisk - prezentuje ilość studentów na danych stanowiskach, które mogą zostać zgrupowane do bardziej uniwersalnego nazewnictwa. Dodatkowo uwzględnia historyczne stanowiska absolwentów.
 \end{itemize}
 
-\subsection{Obiekt 2}
-
-Ponownie opis, tym razem dla obiektu drugiego. Oczywiście, inne obiekty opisujemy tak samo:
+Atrybuty:
 
 \begin{itemize}
-\item Atrybut 1
-\item Atrybut 2
-\item ...
+\item Typ raportu,
+\item Rok ukończenia studiów,
+\item Uzasadnienie danych.
+\end{itemize}
+
+\subsection{Grupa}
+\label{subsection-grupa}
+
+Grupa jest obiektem biznesowym reprezentującym alias dla nazewnictwa użytego w danych pobranych z zewnętrznych źródeł. Obiekt ten wykorzystywany jest wewnątrz raportu w celu unifikacji nazewnictwa użytego w zewnętrznych źródłach.
+
+Atrybuty:
+
+\begin{itemize}
+\item zgrupowana nazwa,
+\item nazwa pierwotna.
 \end{itemize}
 
 \pagebreak
 \section{Biznesowe przypadki użycia}
 \label{Chapter23}
 
-Poniżej przedstawiacie biznesowe przypadki użycia. Proponuję tutaj wykorzystać szablon, który również jest przerobionym szablonem LaTeXowym i dostosowanym do naszych potrzeb, specjalnie dla opisywania przypadków użycia.
+\subsection{Generowanie raportu o absolwentach}
 
-\subsection{ID01: Nazwa przypadku użycia}
-
-\ucsection{ID01: Nazwa przypadku użycia}{Aktor 1, Aktor 2}
-{}{}
-\ucactions{
-\ucaction{1. Pierwszy punkt głównego scenariusza}
-\ucaction{2. Drugi punkt głównego scenariusza}
-\ucaction{3. Trzeci punkt głównego scenariusza}
-}}
-{\ucextensions{
-\ucaction{3.A Opis sytuacji wyjątkowej 1}
-\ucaction{3.A.1 Pierwszy krok sytuacji wyjątkowej 1}
-\ucaction{3.B Opis sytuacji wyjątkowej 2}
-\ucaction{3.B.1 Pierwszy krok sytuacji wyjątkowej 2}
-\ucaction{3.B.2 Drugi krok sytuacji wyjątkowej 2}
+\bucsection{BUC1: Generowanie raportu o absolwentach}{Pracownik dziekanatu}
+{Istnieją dane użytkowników pobrane z zewnętrznych źródeł i wzorce raportów}{Raport}
+{\ucactions{
+\ucaction{1. Pracownik wybiera typ raportu.}
+\ucaction{2. Pracownik wybiera filtry raportu.}
+\ucaction{3. Pracownik analizuje otrzymany raport.}
 }}
 {}
 
-\subsection{ID02: Przykład przypadku użycia bez wyjątków}
+\subsection{Łączenie pojęć w grupy}
 
-\ucsection{ID02: Przykład przypadku użycia bez wyjątków}{Aktor 1}
-{}
-{}{\ucactions{
-\ucaction{1. Pierwszy punkt głównego scenariusza}
-\ucaction{2. Drugi punkt głównego scenariusza}
-\ucaction{3. Trzeci punkt głównego scenariusza}
+\bucsection{BUC2: Łączenie pojęć w grupy}{Pracownik dziekanatu}
+{Istnieją dane użytkowników pobrane z zewnętrznych źródeł}{Grupa}
+{\ucactions{
+\ucaction{1. Pracownik tworzy nową grupę.}
+\ucaction{2. Pracownik przypisuje pojęcia do grupy.}
 }}
 {}
-
-\section{Opis procesów biznesowych z wykorzystaniem notacji graficznej}
-\label{Chapter24}
-
-Ten podrozdział jest opcjonalny (a może nawet można to przedstawić jako podsekcję poprzedniego podrozdziału). Tutaj możemy pochwalić się diagramem (np.~BPMN) dla naszych procesów biznesowych. Oczywiście, nie tylko w formie graficznej -- jeśli macie inną formę, to też się nadaje (o ile jest ona przyzwoita).
