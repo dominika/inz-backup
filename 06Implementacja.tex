@@ -26,22 +26,48 @@ Konfiguracja serwerów HTTP użyta do uruchomienia sytemu LinkedInGrads w środo
 \item Wydajność - niektóre serwery lepiej radzą sobie z obsługą treści statycznych.
 \end{itemize}
 
-/////////////////
-\section{Scenariusz zmiany: modyfikacja raportu}
-\label{Chapter62}
+Jako serwery bazowy wybrano Nginx. Jedyną realną konkurencją dla niego mógłby być Apache, lecz ze względu na łatwiejszą konfigurację oraz bardzo dobrą skalowalność wybrano ten pierwszy. By móc uruchomić na nim aplikację napisaną w języku Ruby trzeba zintegrować go z innym serwerem HTTP. Podjęto decyzję o wyborze Phusion Passenger. Na jego korzyść przemawia duża popularność - korzysta z niego wiele znanych serwisów o bardzo dużym ruchu sieciowym takich jak: salesforce.com czy Symantec. Cechuje się wysoką stabilnością, dobrą wydajnością oraz łatwą konfiguracją. Dodatkowych atutem jest jego interoperacyjność - może również zostać uruchomiony razem z serwerem Apache.
 
-\subsubsection{Opis problemu}
-System X umożliwia generowanie raportów o stanie finansowym (UC1). Istnieje konieczność zmiany wizualnej w układzie graficznym raportu.
+\subsection{Redmine}
 
-\subsubsection{Rozwiązanie}
-...
+Oprogramowanie wspomagające zarządzanie projektem. W przypadku projektu LinkedInGrads pomagał w podziale zadań oraz śledzeniu błędów. Służył również za miejsce wymiany wiedzy o projekcie (wiki).
 
-\section{Mechanizm generowania raportu}
-\label{Chapter63}
+\subsection{Ruby on Rails}
 
-Rozdział o charakterze opisowym prezentujący implementację konkretnego mechanizmu.
+Framework Open Source służący do szybkiego tworzenia aplikacji internetowych. Wspiera kilka znanych zasad tworzenia oprogramowania:
 
-\section{Sekcja ...}
-\label{Chapter64}
+\begin{itemize}
+\item wzorzec MVC – dzieli strukturę aplikacji na trzy płaszczyzny: model zawiera logikę biznesową oraz umożliwia utrwalenie danych, kontroler – odpowiada na żądania użytkownika wykorzystując model, widok – określa w jaki sposób wyświetlić odpowiedź dla użytkownika.
+\item konwencja ponad konfiguracją (ang. Convention Over Configuration) – określa domyślne rozwiązania częstych problemów napotkanych podczas tworzenia aplikacji. Przykładowo we framework’u Ruby on Rails tabela reprezentująca model posiada nazwę taką samą jak on.
+\item reguła DRY (ang. Don't Repeat Yourself) – Unikanie powielenia kodu; abstrahowanie powtarzających się operacji do metod pomocniczych.
+\end{itemize}
 
-Dalsze opisy.
+W ramach framework'a Ruby on Rails w systemie LinkedInGrads wykorzystano następujące komponenty:
+
+\begin{itemize}
+\item Active Record – domyślna biblioteka służąca do mapowania obiektowo-relacyjnego. Udostępnia generator modeli, który znacznie ułatwia tworzenie modeli i ich odwzorowania w relacyjnym schemacie bazy danych. Dodatkowo udostępnia język zapytań do bazy danych, dzięki temu aplikacja nie jest powiązana z konkretnym systemem zarządzania bazą danych.
+\item ActionPack – odpowiada za tworzenie widoków i kontrolerów.
+\item ActionSupport – rozszerza możliwości biblioteki standardowej języka Ruby o częste operacje wykorzystywane podczas implementacji aplikacji internetowych.
+\end{itemize}
+
+\section{Struktura projektu}
+
+W poniższej sekcji opisana zostanie struktura systemu LinkedInGrads, która nie odbiega znacząco od domyślnej struktury proponowanej przez framework Ruby on Rails.
+
+\begin{itemize}
+\item app – zawiera podstawowe komponenty aplikacji: widoki, kontrolery, modele oraz klasy pomocnicze (ang. helpers),
+\item bin – zawiera skrypty odpowiedzialne za wdrażanie i uruchamianie aplikacji,
+\item config – zawiera pliki konfiguracyjne aplikacji,
+\item db – zawiera pliki odpowiedzialne za tworzenie i zarządzanie zmianami w schemacie bazy danych,
+\item docs – zawiera dokumentację projektu,
+\item lib – zawiera wykorzystywane biblioteki,
+\item log – zawiera logi,
+\item public – zawiera pliki statyczne przesyłane do klienta,
+\item spec – zawiera testy oraz związane z testami pliki pomocnicze,
+\item tmp – zawiera pliki tymczasowe,
+\item vendor – zawiera biblioteki zewnętrznych dostawców.
+\end{itemize}
+
+\section{Pliki konfiguracji}
+
+W katalogu config znajdują się następujące pliki konfiguracji: applicaton.rb, boot.rb i environment.rb zawierają one ustawienia aplikacji wspólne dla jej wszystkich środowisk (test, development, production), database.yml zawiera dane potrzebne do połączenia z serwerem bazy danych. Dla każdego środowiska może być ustawiona inny serwer bazy danych, routes.rb łączy akcje kontrolerów z adresami URL. Oprócz tego w katalogu znajdują się dwa podkatalogi: initializers i environemnts. Pierwszy zawiera skrypty inicjalizujące poszczególne części aplikacji. Drugi zawiera konfigurację dla poszczególnych środowisk.
