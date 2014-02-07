@@ -4,95 +4,223 @@
 \section{Wkład poszczególnych osób do przedsięwzięcia}
 \label{Chapter101}
 
-Skład zespołu pracującego nad projektem został przedstawiony w tablicy \ref{tab:roster}.
+Skład zespołu pracującego nad projektem został przedstawiony w tablicy A.1.
 
 \begin{table}[h]
 \centering
 \begin{tabular}{ | c | c | }
 \hline
 \textbf{Stanowisko} & \textbf{Osoba} \\ \hline
-Założyciel projektu, klient & Tytuł Imię Nazwisko \\ \hline
-Główny użytkownik & Tytuł Imię Nazwisko \\ \hline
-Główny dostawca & Tytuł Imię Nazwisko \\ \hline
-Dostawca od strony DRO & Tytuł Imię Nazwisko \\ \hline
-Starszy konsultant & Tytuł Imię Nazwisko \\ \hline
-Konsultant & Tytuł Imię Nazwisko \\ \hline
-Kierownik projektu & inż.~Imię Nazwisko \\ \hline
-Analityk/Architekt & inż.~Imię Nazwisko \\ \hline
-Programiści & Imię Nazwisko \\ 
- & Imię Nazwisko \\ 
- & Imię Nazwisko \\ 
- & Imię Nazwisko \\
+Założyciel projektu, klient & dr hab. inż. Jerzy Nawrocki \\ \hline
+Główny użytkownik & dr hab inż. Jerzy Nawrocki \\ \hline
+Główny dostawca & dr hab inż. Mikołaj Morzy \\ \hline
+Dostawca od strony DRO & mgr inż. Mateusz Leszner \\ \hline
+Starszy konsultant & mgr inż. Sylwia Kopczyńska \\ \hline
+Kierownik projektu & inż. Rafał Broll \\ \hline
+Analityk & inż. Tomasz Bajaczyk \\ \hline
+Programiści & Adam Butkiewicz \\ 
+ & Dominika Stempniewicz \\ 
+ & Dawid Wengrzik \\ 
+ & Joanna Zakrzewska \\
 \hline
 \end{tabular}
 \caption{Osoby związane z przedsięwzięciem}\label{tab:roster}
 \end{table}
 
-\noindent
-Teraz bardzo ważna rzecz -- w tym miejscu piszecie, co kto przygotowywał w tekście pracy inżynierskiej. Prawdopodobnie tutaj będziecie musieli wymienić, które rozdziały został dla Was przygotowane przez kierownika projektu, analityka, architekta lub inną osobę. Oczywiście, piszecie też, za które części dokumentu Wy jesteście odpowiedzialni. To jest ważna, aby ta część była tutaj precyzyjnie przygotowana -- takie są wymogi uczelni oraz też uwzględnienia pracy innych osób.
+Wkład poszczególnych osób w napisanie niniejszej pracy został przedstawiony w tablicy A.2.
 
-\noindent
+\begin{table}[h]
+\centering
+\begin{tabular}{ | c | c | }
+\hline
+\textbf{Rozdział} & \textbf{Autorzy} \\ \hline
+rozdział 1 & Joanna Zakrzewska \\ \hline
+rozdział 2 & Dawid Wengrzik \\ \hline
+rozdział 3 & Adam Butkiewicz \\ \hline
+rozdział 4 & Dawid Wengrzik \\ \hline
+rozdział 5 & Dominika Stempniewicz \\ \hline
+rozdział 6 & Adam Butkiewicz \\ \hline
+rozdział 7 & Joanna Zakrzewska \\ \hline
+rozdział 8 & Joanna Zakrzewska \\ \hline
+rozdział 9 & Joanna Zakrzewska, Dawid Wengrzik \\ \hline
+dodatek A & Joanna Zakrzewska \\ \hline
+dodatek B & Dawid Wengrzik \\ \hline
+dodatek C & Dominika Stempniewicz \\ \hline
+dodatek D & Joanna Zakrzewska \\ \hline
+\end{tabular}
+\caption{Wkład poszczególnych osób w napisanie pracy dyplomowej poszczególnych osób}\label{tab:roster}
+\end{table}
 
 Odpowiedzialność za część implementacyjną systemu została przedstawiona poniżej:
 
+\newpage
 \begin{description}
-\item Imię i nazwisko pierwszego programisty
+\item Adam Butkiewicz
 
 \begin{itemize}
-\item Odpowiedzialność 1
-\item Odpowiedzialność 2
-\item Odpowiedzialność 3
-\item ...
+\item implementacja modeli,
+\item implementacja komunikacja z systemem eLogin,
+\item implementacja grupowania.
 \end{itemize}
 \noindent
 
-\item Imię i nazwisko drugiego programisty
+\item Dominika Stempniewicz
 
 \begin{itemize}
-\item Odpowiedzialność 1
-\item Odpowiedzialność 2
-\item Odpowiedzialność 3
-\item ...
+\item konfiguracja serwera,
+\item implementacja importów absolwentów,
+\item implementacja parsera serwisu zewnętrznego LinkedIn,
+\item implementacja menedżera zadań i aktualizatora danych absolwentów,
+\item implementacja JSONowego API grupowania.
 \end{itemize}
 \noindent
 
-\item Imię i nazwisko trzeciego programisty
+\item Dawid Wengrzik
 
 \begin{itemize}
-\item Odpowiedzialność 1
-\item Odpowiedzialność 2
-\item Odpowiedzialność 3
-\item ...
+\item realizacja warstwy prezentacji,
+\item implementacja generowania raportów.
 \end{itemize}
 \noindent
 
-\item Imię i nazwisko czwartego programisty
+\item Joanna Zakrzewska
 
 \begin{itemize}
-\item Odpowiedzialność 1
-\item Odpowiedzialność 2
-\item Odpowiedzialność 3
-\item ...
+\item stworzenie automatycznych testów jednostkowych i integracyjnych,
+\item przeprowadzenie manualnych testów akceptacyjnych,
+\item konfiguracja serwera Jenkins.
 \end{itemize}
 \noindent
 
 \end{description}
-
 \noindent
-Ewentualne podziękowania dla innych osób, które Wam pomagały, mowy dziękczynne, itd.
 
 \section{Wykaz użytych narzędzi}
 \label{Chapter104}
-
-Wprawdzie jest odpowiedni podrozdział w rozdziale \ref{Chapter5}, ale tutaj można wymienić nawet małe narzędzia i biblioteki, które wykorzystywaliście (np.~narzędzie do robienia makiet interfejsu) i które warto wymienić, także dla przyszłych roczników (można też dać linki).
+\noindent
+\begin{itemize} \itemsep0em
+\item Ruby 2.0.0
+\item Rails 4.0.0
+\item RSpec 2.4.17 + RSpec Mocks 2.14.4
+\item FactoryGirl 4.3.0
+\item Jenkins 1.544
+\item RubyMine 
+\item Phusion Passenger
+\item PostgreSQL 9.3.2
+\item pgAdmin 1.18.1
+\item SVN 1.6.11
+\item Nginx
+\item Haml 4.0.4
+\item jQuery 2.1.0
+\item CSS3 Microsoft Modern Buttons 1.2
+\item SASS 3.2.12
+\item Shoulda matchers 2.4.0
+\item Spreadsheet 0.9.1
+\item Faker 1.2.0
+\item Squeel 1.1.1
+\item Rake 10.1.0
+\item I18n 0.6.5
+\item Minitest 4.7.5
+\item Multi json 1.8.2
+\item Atomic 1.1.14
+\item Thread safe 0.1.3
+\item Tzinfo 0.3.38
+\item Activesupport 4.0.0
+\item Builder 3.1.4
+\item Erubis 2.7.0
+\item Rack 1.5.2
+\item Rack-test 0.6.2
+\item Actionpack 4.0.0
+\item Mime-types 1.25
+\item Polyglot 0.3.3
+\item Treetop 1.4.15
+\item Mail 2.5.4
+\item Actionmailer 4.0.0
+\item Activemodel 4.0.0
+\item Activerecord-deprecated finders 1.0.3
+\item Arel 4.0.1
+\item Activerecord 4.0.0
+\item Gyoku 1.1.0
+\item Nokogiri 1.5.10
+\item Akami 1.2.0
+\item Ast 1.1.0
+\item Coffee-script-source 1.6.3
+\item Execjs 2.0.2
+\item Coffee-script 2.2.0
+\item Thor 0.18.1
+\item Railties 4.0.0
+\item Coffee-rails 4.0.1
+\item Daemons 1.1.9
+\item Delayed job 4.0.0
+\item Delayed job active record 4.0.0
+\item Diff-lcs 1.2.4
+\item Unf ext 0.0.6
+\item Unf 0.1.3
+\item Domain name 0.5.15
+\item Eventmachine 1.0.3
+\item Factory girl 4.3.0
+\item Factory girl rails 4.3.0
+\item Multipart-post 1.2.0
+\item Faraday 0.8.8
+\item Google-code-prettify-rails 1.1.0
+\item Tilt 1.4.1
+\item Haml 4.0.4
+\item Hashie 2.0.5
+\item Hike 1.2.3
+\item Http-cookie 1.0.2
+\item Json 1.8.1
+\item Multi xml 0.5.5
+\item Httparty 0.12.0
+\item Httpauth 0.2.0
+\item Rubyntlm 0.3.4
+\item Httpi 2.1.0
+\item Jbuilder 1.5.2
+\item Jquery-rails 2.1.0
+\item Jwt 0.1.8
+\item Konf 0.0.2
+\item Oauth2 0.9.2
+\item Linkedin-oauth2 0.1.1
+\item Net-http-digest auth 1.4
+\item Net-http-persistent 2.9
+\item Ntlm-http 0.1.1
+\item Webrobots 0.1.1
+\item Mechanize 2.7.2
+\item Linkedin-scraper 0.1.0
+\item Nori 2.3.0
+\item Slop 3.4.7
+\item Parser 2.1.4
+\item Pg 0.17.0
+\item Polyamorous 0.6.4
+\item Powerpack 0.0.9
+\item Rabl 0.9.3
+\item Bundler 1.3.5
+\item Sprockets 2.10.0
+\item Sprockets-rails 2.0.1
+\item Rainbow 2.0.0
+\item Rdoc 3.12.2
+\item Rspec-core 2.14.7
+\item Rspec-expectations 2.14.4
+\item Rspec-mocks 2.14.4
+\item Rspec-rails 2.14.0
+\item Rubocop 0.18.0
+\item Ruby-ole 1.2.11.7
+\item Sass 3.2.12
+\item Sass-rails 4.0.1
+\item Wasabi 3.2.0
+\item Savon 2.3.0
+\item Sdoc 0.3.20
+\item Spreadsheet 0.9.1
+\item Thin 1.6.1
+\item Tor-privoxy 0.1.1
+\item Turbolinks 1.3.0
+\item Uglifier 2.3.0
+\end{itemize}
 
 \section{Zawartość płyty CD}
 
 Do dokumentu załączono płytę CD o następującej zawartości:
 
 \begin{itemize}
-\item Zawartość 1
-\item Zawartość 2
-\item Zawartość 3
-\item ...
+\item praca dyplomowa.pdf – praca dyplomowa inżynierska,
+\item archiwum kodu źródłowego systemu.
 \end{itemize}
