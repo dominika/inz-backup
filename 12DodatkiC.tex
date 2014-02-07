@@ -2,6 +2,133 @@
 \label{Chapterc1}
 
 \section{Instalacja wymaganych komponentów}
-...
+Instrukcja dotyczy instalacji w systemach z rodziny Unix.
 \section{Instalacja i uruchomienie}
-...
+\begin{itemize}
+\item Menedżera wersji języka ruby RVM (ang. ruby version manager):
+\begin{verbatim}
+curl -sSL https://get.rvm.io > rvm_install
+chmod +x rvm_install
+sudo ./rvm_install
+\end{verbatim}
+	\begin{itemize}
+	\item użytkownik, który będzie korzystał z menedżera powinien być w 		grupie `rvm`, aby to sprawdzić:
+	\begin{verbatim} 
+	groups
+	\end{verbatim}
+	\item jeżeli użytkownik nie jest w grupie `rvm` to dodaj go do tej 			grupy:
+	\begin{verbatim}
+	sudo usermod -a -G linkedin rvm
+	\end{verbatim}
+	\item jeżeli `rvm` nie jest dostępne:
+	\begin{verbatim}
+	rvm reload
+	\end{verbatim}
+	\end{itemize}
+\item Ruby:
+\begin{verbatim}
+rvm install 2.0.0-p247
+\end{verbatim}
+	\begin{itemize}
+	\item ruby 2.0.0 powinien być zainstalowany, domyślny i bieżący:
+	\begin{verbatim}
+	rvm list
+	\end{verbatim}
+	oczekiwany wynik:
+	\begin{verbatim}
+	rvm rubies
+=* ruby-2.0.0-p247 [ x86_64 ]
+=> - current
+=* - current && default
+* - default
+	\end{verbatim}
+	\item jeżeli 2.0.0 nie jest bieżący:
+	\begin{verbatim}
+	rvm use 2.0.0
+	\end{verbatim}
+	\item jeżeli 2.0.0 nie jest domyślny:
+	\begin{verbatim}
+	rvm alias create default ruby-2.0.0-p247
+	\end{verbatim}
+	\end{itemize}
+\item Wymagane pakiety:
+
+\begin{verbatim}
+sudo apt-get update
+sudo apt-get install libreadline-dev rubygems build-essential
+  postgresql postgresql-contrib subversion ia32-libs
+  libpam0g:i386 libxslt-dev libxml2-dev libpq-dev
+  libcurl4-openssl-dev nodejs libpcre3 libpcre3-dev
+\end{verbatim}
+\item Passenger:
+\begin{verbatim}
+rvm all do gem install passenger --version 4.0.17
+\end{verbatim}
+\item Nginx:
+\begin{verbatim}
+rvm all do passenger-install-nginx-module --auto-download
+  --auto --prefix=/opt/nginx
+rvmsudo -E /usr/local/rvm/wrappers/ruby-2.0.0-p247/ruby
+  /usr/local/rvm/gems/ruby-2.0.0-p247/gems/passenger-4.0.17/bin/
+passenger-install-nginx-module --auto-download
+  --auto --prefix=/opt/nginx
+\end{verbatim}
+	\begin{itemize}
+	\item w razie błędów:
+	\begin{verbatim}
+	rvmsudo rvm get stable && rvm reload && rvmsudo rvm repair all
+	\end{verbatim}
+	\item zmiany w konfiguracji:
+		\begin{itemize}
+		\item skopiuj plik głównej konfiguracji:
+		\begin{verbatim}
+		sudo cp docs/nginx.conf /opt/nginx/conf/nginx.conf
+		\end{verbatim}
+		UWAGA: upewnij się, że ścieżki do wrappera ruby oraz gemu passenger w pliku konfiguracji są odpowiednie tj. takie jak:
+		\begin{verbatim}
+		passenger-config --root
+		\end{verbatim}
+				\item utwórz symlink konfiguracji projektu:
+		\begin{verbatim}
+		sudo mkdir /opt/nginx/conf/sites
+		  && sudo ln -s <katalog projektu>/config/nginx.linkedin.conf/
+		  opt/nginx/conf/sites/nginx.linkedin.conf
+		\end{verbatim}
+		UWAGA: upewnij się, że ścieżka root w pliku konfiguracji wskazuje na katalog $<katalog projektu>/public$
+		\end{itemize}
+	\item Najczęstsze problemy:
+		\begin{itemize}
+		\item po próbie restartu/uruchomieniu występuje błąd `cannot bind`:
+		\begin{verbatim}
+		sudo killall nginx
+		\end{verbatim}
+		\end{itemize}
+	\item Kontrola:
+		\begin{itemize}
+		\item uruchamianie:
+		\begin{verbatim}
+		sudo /opt/nginx/sbin/nginx
+		\end{verbatim}
+		\item przeładowanie konfiguracji:
+		\begin{verbatim}
+		sudo /opt/nginx/sbin/nginx -s reload
+		\end{verbatim}
+		\end{itemize}
+	\item Tor oraz Privoxy:
+	\begin{verbatim}
+	sudo apt-get install tor privoxy
+	\end{verbatim}
+		\begin{itemize}
+		\item Upewnij się, że plik $/etc/privoxy/config$ zawiera linię:
+		\begin{verbatim}
+		forward-socks4a / 127.0.0.1:9050 .
+		\end{verbatim}
+		\item Zrestartuj usługę:
+		sudo /etc/init.d/privoxy restart
+		\end{itemize}
+	\item w `~/.bashrc` umieść:
+	\begin{verbatim}
+	export RAILS_ENV=production
+	\end{verbatim}
+	\end{itemize}
+\end{itemize}
